@@ -11,29 +11,32 @@ const movies = [
 ];
 
 // 1. Get an array of just the movie titles.
-const titles = // your code here
+const titles = movies.map(movie=>movie.title);
 
 // 2. Get all Sci-Fi movies.
-const sciFiMovies = // your code here
+const sciFiMovies = movies.filter(movie => movie.genre==="Sci-Fi");
 
 // 3. Get all movies rated 8.5 or above.
-const highRated = // your code here
+const highRated = movies.filter(movie => movie.rating>=8.5);
 
 // 4. Find the movie titled "Parasite".
-const parasite = // your code here
+const parasite = movies.find(movie=> movie.title==="Parasite");
 
 // 5. Check if any movie has a rating above 9.5.
-const hasOver9_5 = // your code here
+const hasOver9_5 = movies.some(movie=>movie.rating>9.5);
 
 // 6. Get the titles of all Sci-Fi movies rated above 8.0 (chain filter and map).
-const sciFiTitles = // your code here
+const sciFiTitles = movies
+.filter(movie=>movie.rating>8.0 && movie.genre==="Sci-Fi")
+.map(movie=>movie.title);
+
 
 // 7. Build a string listing all titles separated by " | "
 //    Expected: "Inception | The Dark Knight | Interstellar | ..."
-const titleString = // your code here
+const titleString = movies.map(movie=>movie.title).join(" | ");
 
 // 8. Sort movies by rating descending (highest first).
 //    Note: sort() mutates the original array. Use [...movies].sort(...) to sort a copy instead.
-const sorted = // your code here
+const sorted = [...movies].sort((a, b) => b.rating - a.rating);
 
 console.log(movies); // should be unchanged after all operations above
