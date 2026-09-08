@@ -7,15 +7,15 @@ const year = 2010;
 const rating = 8.8;
 
 // 1.
-const label = "Movie: " + title + " (" + year + ")";
+const label = `Movie: ${title} (${year})`;
 
 // 2. Multi-line string (rewrite without \n concatenation):
-const description = "Title: " + title + "\n" +
-                    "Year: " + year + "\n" +
-                    "Rating: " + rating + "/10";
+const description = `Title: ${title}
+Year: ${year}
+Rating: ${rating}/10`;
 
 // 3. Expression inside the string:
-const summary = "Rating is " + (rating >= 8.5 ? "excellent" : "good");
+const summary = `Rating is ${rating >= 8.5 ? "excellent" : "good"}`;
 
 console.log(label);       // "Movie: Inception (2010)"
 console.log(description); // Title: Inception \n Year: 2010 \n Rating: 8.8/10

@@ -2,10 +2,10 @@
 // ### Exercise 1 — `const` and `let`
 // Identify which variables should be `const` and which should be `let`. Rewrite the block.
 
-var movieTitle = "Inception";
-var releaseYear = 2010;
-var isWatched = false;
-var rating = 8.8;
+let movieTitle = "Inception";
+const releaseYear = 2010;
+let isWatched = false;
+let rating = 8.8;
 
 // Later in the code:
 isWatched = true;
