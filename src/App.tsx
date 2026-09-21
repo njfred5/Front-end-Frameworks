@@ -9,8 +9,6 @@ function App() {
   const [query, setQuery] = useState('');
   const [minRating, setMinRating] = useState(0);
 
-  // Derived state: recomputed on every render from movies + query + minRating.
-  // Not stored in its own useState — that would need to be kept in sync manually.
   const filteredMovies = movies.filter((movie) => {
     const matchesQuery = movie.title
       .toLowerCase()
