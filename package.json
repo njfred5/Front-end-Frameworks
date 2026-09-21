@@ -17,11 +17,11 @@
     "test:m3": "vitest run src/test/milestone-03.test.tsx"
   },
   "dependencies": {
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0",
-    "lucide-react": "^0.546.0",
-    "motion": "^12.23.24"
+    "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^7.0.1",
@@ -38,6 +38,6 @@
     "jsdom": "^30.0.1",
     "typescript": "^5.5.3",
     "vite": "^5.4.0",
-    "vitest": "^4.1.10"
+    "vitest": "^3.2.7"
   }
 }

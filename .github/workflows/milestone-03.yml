@@ -1,0 +1,71 @@
+# Milestone 3 — Global State Management with Context API
+#
+# This workflow runs when a student pushes the `milestone-3` tag.
+#
+# To submit:
+#   git add .
+#   git commit -m "Milestone 3 submission"
+#   git tag milestone-3
+#   git push origin milestone-3
+#
+# To resubmit (tags are unique):
+#   git tag -d milestone-3
+#   git push origin --delete milestone-3
+#   git tag milestone-3 && git push origin milestone-3
+#
+# The workflow runs all three milestone test suites (M1 + M2 + M3),
+# confirming global state is in place AND all previous milestones still hold.
+
+name: Milestone 3 — Global State with Context API
+
+on:
+  push:
+    tags:
+      - "milestone-3"
+
+jobs:
+  milestone-3:
+    name: Milestone 3 Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Copy environment file
+        run: cp .env.example .env
+
+      # ── Static checks ───────────────────────────────────────────────────────
+
+      - name: TypeScript — type check
+        run: npm run type-check
+
+      - name: ESLint — lint check
+        run: npm run lint
+
+      # ── Test suite (M1 + M2 regression + M3 tests) ─────────────────────────
+
+      - name: Run Milestone 3 tests
+        run: npm run test:run:verbose
+
+      # ── Notify Google Sheet ─────────────────────────────────────────────────
+
+      - name: Notify Google Sheet
+        if: always()
+        run: |
+          curl -X POST "${{ secrets.SHEETS_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"repo\": \"${{ github.repository }}\",
+              \"student\": \"${{ github.actor }}\",
+              \"tag\": \"${{ github.ref_name }}\",
+              \"status\": \"${{ job.status }}\",
+              \"milestone\": \"3\",
+              \"run_url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"
+            }"

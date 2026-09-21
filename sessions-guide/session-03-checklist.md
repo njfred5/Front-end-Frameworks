@@ -13,7 +13,7 @@
 1. **Genre data**
    - Create `src/data/genres.js` exporting a `GENRES` object (id → name map) and a `getGenreNames(genreIds)` helper.
    - Acceptance: `getGenreNames([28, 12])` returns `['Action', 'Adventure']`.
-
+a
 2. **Storage utility**
    - Create `src/utils/storage.js` with the following functions:
      - `getFavorites()` — reads and parses `localStorage`, returns `[]` on error
