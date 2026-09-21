@@ -42,7 +42,7 @@ function MovieCard({ movie, onClick }: MovieCardProps) {
         </div>
       </div>
       <div className="movie-card-info">
-        <h3 className="movie-card-title">{movie.title}</h3>
+        <h2 className="movie-card-title">{movie.title}</h2>
         <div className="movie-card-meta">
           <span>{releaseYear}</span>
         </div>

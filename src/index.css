@@ -151,6 +151,7 @@ select {
 }
 
 .logo-text {
+  font-size: inherit;
   font-weight: 800;
   letter-spacing: -0.03em;
 }

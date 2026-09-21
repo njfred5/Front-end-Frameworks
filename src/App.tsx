@@ -23,7 +23,7 @@ function App() {
         <div className="header-inner">
           <div className="brand-logo">
             <span className="logo-dot" />
-            <span className="logo-text">Movie App</span>
+            <h1 className="logo-text">Movie App</h1>
           </div>
           <SearchBar query={query} onChange={setQuery} />
         </div>
