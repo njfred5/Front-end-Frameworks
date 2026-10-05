@@ -2,20 +2,24 @@ import { useState } from 'react';
 import { Star, Heart } from 'lucide-react';
 import type { Movie } from '../types';
 import { getPosterUrl } from '../data/sampleMovies';
+
 interface MovieCardProps {
   movie: Movie;
   onClick?: (movie: Movie) => void;
 }
+
 function MovieCard({ movie, onClick }: MovieCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
+
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : '—';
+
   const handleToggleFavourite = (event: React.MouseEvent) => {
-    // Stop the click from also triggering the card's onClick (opening the modal)
     event.stopPropagation();
     setIsFavourite((prev) => !prev);
   };
+
   return (
     <div className="movie-card" onClick={() => onClick?.(movie)}>
       <div className="poster-wrapper">
@@ -41,6 +45,7 @@ function MovieCard({ movie, onClick }: MovieCardProps) {
           </div>
         </div>
       </div>
+
       <div className="movie-card-info">
         <h2 className="movie-card-title">{movie.title}</h2>
         <div className="movie-card-meta">
