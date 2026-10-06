@@ -10,7 +10,7 @@ export const GENRES = {
   14: "Fantasy",
   36: "History",
   27: "Horror",
-  10402: "Music",
+  10402: "Mu7usic",
   9648: "Mystery",
   10749: "Romance",
   878: "Sci-Fi",
