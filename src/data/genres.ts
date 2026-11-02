@@ -1,4 +1,4 @@
-export const GENRES = {
+export const GENRES: Record<number, string> = {
   28: "Action",
   12: "Adventure",
   16: "Animation",

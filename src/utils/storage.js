@@ -1,5 +1,5 @@
-const FAVORITES_KEY = 'movieapp_favorites';
-const THEME_KEY = 'movieapp_theme';
+const FAVORITES_KEY = 'cinegrid_favorites';
+const THEME_KEY = 'cinegrid_theme';
 const API_KEY_KEY = 'movieapp_api_key';
 
 export function getFavorites() {
@@ -13,6 +13,10 @@ export function getFavorites() {
   }
 }
 
+export function saveFavorites(favorites) {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+}
+
 export function toggleFavorite(movie) {
   const current = getFavorites();
   const alreadyFavorite = current.some((m) => m.id === movie.id);
@@ -21,7 +25,7 @@ export function toggleFavorite(movie) {
     ? current.filter((m) => m.id !== movie.id)
     : [...current, movie];
 
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
+  saveFavorites(updated);
   return updated;
 }
 

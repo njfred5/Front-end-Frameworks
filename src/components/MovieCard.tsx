@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Star, Heart } from 'lucide-react';
 import type { Movie } from '../types';
 import { getPosterUrl } from '../data/sampleMovies';
+import { AppContext } from '../context/AppContext';
 
 interface MovieCardProps {
   movie: Movie;
@@ -9,7 +10,9 @@ interface MovieCardProps {
 }
 
 function MovieCard({ movie, onClick }: MovieCardProps) {
-  const [isFavourite, setIsFavourite] = useState(false);
+  const context = useContext(AppContext);
+  const [localFavourite, setLocalFavourite] = useState(false);
+  const isFavourite = context ? context.isFavorite(movie.id) : localFavourite;
 
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getFullYear()
@@ -17,7 +20,11 @@ function MovieCard({ movie, onClick }: MovieCardProps) {
 
   const handleToggleFavourite = (event: React.MouseEvent) => {
     event.stopPropagation();
-    setIsFavourite((prev) => !prev);
+    if (context) {
+      context.toggleFavorite(movie);
+    } else {
+      setLocalFavourite((prev) => !prev);
+    }
   };
 
   return (
